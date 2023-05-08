@@ -1,0 +1,379 @@
+1.public class GrowableIntArray {
+    private int[] array;
+    private int size;
+    
+    public GrowableIntArray(int initialSize) {
+        this.array = new int[initialSize];
+        this.size = 0;
+    }
+    
+    public void add(int value) {
+        if (this.size == this.array.length) {
+            int[] newArray = new int[this.array.length * 2];
+            System.arraycopy(this.array, 0, newArray, 0, this.array.length);
+            this.array = newArray;
+        }
+        this.array[this.size] = value;
+        this.size++;
+    }
+    
+    public int get(int index) {
+        return this.array[index];
+    }
+    
+    public int size() {
+        return this.size;
+    }
+}
+
+2.
+public class Matrix {
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {22, 44, 41, 84},
+                {68, 12, 71, 33},
+                {94, 14, 44, 31},
+                {88, 77, 64, 68}
+        };
+
+        System.out.println("22\t44\t41\t84");
+        System.out.println("68\t12\t71\t33");
+        System.out.println("94\t14\t44\t31");
+        System.out.println("88\t77\t64\t68");
+
+        System.out.println("Enter a number: ");
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (matrix[i][j] == num) {
+                    System.out.print("Numbers around " + num + " are: ");
+                    if (i > 0) {
+                        System.out.print(matrix[i - 1][j] + " ");
+                    }
+                    if (i < 3) {
+                        System.out.print(matrix[i + 1][j] + " ");
+                    }
+                    if (j > 0) {
+                        System.out.print(matrix[i][j - 1] + " ");
+                    }
+                    if (j < 3) {
+                        System.out.print(matrix[i][j + 1] + " ");
+                    }
+                    System.out.println();
+                }
+            }
+        }
+    }
+}
+
+
+3. 
+
+public class WordCount {
+    public static void main(String[] args) {
+        String s = "Java is a program language , it is a platform independent language"; //
+        int wordCount = 0; 
+        String[] words = s.split("\\s+"); 
+        for (int i = 0; i < words.length; i++) { 
+            wordCount++; 
+        }
+        System.out.println("Number of words in the given string: " + wordCount); 
+        Map<String, Integer> wordMap = new HashMap<>(); 
+        for (String word : words) { 
+            if (wordMap.containsKey(word)) { 
+                wordMap.put(word, wordMap.get(word) + 1); 
+            } else {
+                wordMap.put(word, 1); 
+            }
+        }
+        System.out.println("Word Appearance Counts:"); 
+        for (Map.Entry<String, Integer> entry : wordMap.entrySet()) { 
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
+    }
+}
+
+4.
+import javax.swing.*;
+public class Main{
+public static void main( String arg[] )
+    {
+	JButton button = new JButton() ;
+	String name = button.getClass().getName() ;
+	System.out.println("JButton") ;
+	name = button.getClass().getSuperclass().getName();
+	System.out.println( "AbstractButton" ) ;
+    }
+}
+
+5. 
+public class FloatArray { 
+  
+    public static void main(String[] args) 
+    { 
+        float[] valueA =
+        { 
+            10.2f , 14.3f , 16.5f , 
+            18.4f , 22.3f , 36.8f , 
+            45.5f , 60.8f , 85.5f , 94.8f
+        } ; 
+
+        float num1 = 12.5f; 
+        float num2 = 77.0f; 
+        float num3 = 13.0f; 
+        float num4 = 86.0f; 
+  
+        float prev1 = findPreviousNumber(valueA, num1); 
+        float prev2 = findPreviousNumber(valueA, num2); 
+  
+        System.out.println("Previous number of " + num1 + " is " + prev1); 
+        System.out.println("Previous number of " + num2 + " is " + prev2); 
+  
+        float near1 = findNearestNumber(valueA, num3); 
+        float near2 = findNearestNumber(valueA, num4); 
+  
+        System.out.println("Nearest number of " + num3 + " is " + near1); 
+        System.out.println("Nearest number of " + num4 + " is " + near2); 
+    } 
+  
+    static float findPreviousNumber(float arr[], float num) 
+    { 
+        float prev = 0; 
+        for (int i = 0; i < arr.length; i++) { 
+            if (arr[i] >= num) { 
+                break; 
+            } 
+            prev = arr[i]; 
+        } 
+        return prev; 
+    } 
+  
+    static float findNearestNumber(float arr[], float num) 
+    { 
+        float diff = Math.abs(arr[0] - num); 
+        float near = arr[0]; 
+  
+        for (int i = 0; i < arr.length; i++) { 
+            if (Math.abs(arr[i] - num) < diff) { 
+                diff = Math.abs(arr[i] - num); 
+                near = arr[i]; 
+            } 
+        } 
+        return near; 
+    } 
+}
+
+6.
+public class IntArray { 
+  
+    public static void main(String[] args) 
+    { 
+        int[] intA = new int[25]; 
+        Random rnd = new Random(); 
+        int index = 0; 
+        while (index < 25) { 
+            int num = rnd.nextInt(26); 
+            boolean found = false; 
+            for (int i = 0; i < index; i++) { 
+                if (intA[i] == num) { 
+                    found = true; 
+                    break; 
+                } 
+            } 
+            if (!found) { 
+                intA[index] = num; 
+                index++; 
+            } 
+        } 
+        System.out.println("Randomly generated array is : "); 
+        for (int i = 0; i < 25; i++) { 
+            System.out.print(intA[i] + " "); 
+        } 
+    } 
+}
+
+7.
+
+public class Combinations { 
+  
+    public static void main(String[] args) 
+    { 
+        String str = "java"; 
+        int n = str.length(); 
+        Combinations permutation = new Combinations(); 
+        permutation.permute(str, 0, n-1); 
+    } 
+  
+    private void permute(String str, int l, int r) 
+    { 
+        if (l == r) 
+            System.out.println(str); 
+        else
+        { 
+            for (int i = l; i <= r; i++) 
+            { 
+                str = swap(str,l,i); 
+                permute(str, l+1, r); 
+                str = swap(str,l,i); 
+            } 
+        } 
+    } 
+  
+    public String swap(String a, int i, int j) 
+    { 
+        char temp; 
+        char[] charArray = a.toCharArray(); 
+        temp = charArray[i] ; 
+        charArray[i] = charArray[j]; 
+        charArray[j] = temp; 
+        return String.valueOf(charArray); 
+    } 
+  
+}
+
+8.
+import java.util.Scanner;
+public class Game { 
+  
+    public static void main(String[] args) 
+    { 
+        String shuffle[] = new String[]	
+        {
+            "fferbu" , "loaft" , "ritsng"
+        } ;
+        
+        String answer[] = new String[]
+        {
+            "buffer" , "float" , "string"
+        } ;
+        
+        int points = 0;
+        
+        for (int i = 0; i < shuffle.length; i++) {
+            System.out.println("What is the correct word for " + shuffle[i] + "?");
+            Scanner sc = new Scanner(System.in);
+            String userAnswer = sc.nextLine();
+            if (userAnswer.equals(answer[i])) {
+                points++;
+            }
+        }
+        
+        System.out.println("You scored " + points + " points!");
+    } 
+}
+9.
+import java.util.*;
+public class PowerConsumption { 
+  
+    String date; 
+    int machineNo; 
+    int consumptionInHp; 
+  
+    public PowerConsumption(String date, int machineNo, int consumptionInHp) 
+    { 
+        this.date = date; 
+        this.machineNo = machineNo; 
+        this.consumptionInHp = consumptionInHp; 
+    } 
+  
+    public String toString() 
+    { 
+        StringBuffer str = new StringBuffer(); 
+        str.append(date); 
+        str.append("\t\t"); 
+        str.append(String.valueOf(machineNo)); 
+        str.append("\t\t"); 
+        str.append(String.valueOf(consumptionInHp)); 
+        return str.toString(); 
+    } 
+  
+    public static void main(String ar[]) 
+    { 
+        PowerConsumption p[] = new PowerConsumption[6]; 
+        p[0] = new PowerConsumption("10.05.08", 30, 100); 
+        p[1] = new PowerConsumption("10.05.08", 31, 120); 
+        p[2] = new PowerConsumption("10.05.08", 32, 125); 
+        p[3] = new PowerConsumption("11.05.08", 30, 145); 
+        p[4] = new PowerConsumption("11.05.08", 31, 155); 
+        p[5] = new PowerConsumption("12.05.08", 32, 165); 
+        System.out.println("Date\t\tMachine\t\tConsumption"); 
+        for (int i = 0; i < p.length; i++) { 
+            System.out.println(p[i]); 
+        } 
+ 
+        Map<String, Integer> totalMap = new HashMap<>(); 
+        Map<Integer, Integer> machineMap = new HashMap<>(); 
+        for (int i = 0; i < p.length; i++) { 
+            if (totalMap.containsKey(p[i].date)) { 
+                totalMap.put(p[i].date, totalMap.get(p[i].date) + p[i].consumptionInHp); 
+            } 
+            else { 
+                totalMap.put(p[i].date, p[i].consumptionInHp); 
+            } 
+            if (machineMap.containsKey(p[i].machineNo)) { 
+                machineMap.put(p[i].machineNo, machineMap.get(p[i].machineNo) + p[i].consumptionInHp); 
+            } 
+            else { 
+                machineMap.put(p[i].machineNo, p[i].consumptionInHp); 
+            } 
+        } 
+  
+        System.out.println("Machine/Date\t10.05.08\t11.05.08\t12.05.08\tTotal"); 
+        int total = 0; 
+        for (Map.Entry<Integer, Integer> entry : machineMap.entrySet()) { 
+            int machineNo = entry.getKey(); 
+            int machineTotal = entry.getValue(); 
+            int date1Total = totalMap.getOrDefault("10.05.08", 0); 
+            int date2Total = totalMap.getOrDefault("11.05.08", 0); 
+            int date3Total = totalMap.getOrDefault("12.05.08", 0); 
+            System.out.println(machineNo + "\t\t" + date1Total + "\t\t" + date2Total + "\t\t" + date3Total + "\t\t" + machineTotal); 
+            total += machineTotal; 
+        } 
+        System.out.println("Total\t\t" + totalMap.getOrDefault("10.05.08", 0) + "\t\t" + totalMap.getOrDefault("11.05.08", 0) + "\t\t" + totalMap.getOrDefault("12.05.08", 0) + "\t\t" + total); 
+    } 
+}
+
+10. 
+import java.util.Random;
+public class HandThrowAndStrikeGame {
+    public static void main(String[] args) {
+        Random random = new Random(); 
+        int playerAScore = 0;
+        int playerBScore = 0;
+        boolean isPlayerAOut = false;
+        boolean isPlayerBOut = false;
+        
+        System.out.println("Hand Throw and Strike Game Start");
+        System.out.println("Player A is batting and Player B is bowling");
+        
+        while (!isPlayerAOut && !isPlayerBOut) {
+            int playerAThrow = random.nextInt(7);
+            int playerBThrow = random.nextInt(7);
+            
+            System.out.println("Player A throws " + playerAThrow + " Player B throws " + playerBThrow);
+            
+            if (playerAThrow == playerBThrow) {
+                isPlayerAOut = true;
+            } else {
+                playerAScore += playerAThrow;
+            }
+            
+            if (playerAThrow == playerBThrow) {
+                isPlayerBOut = true;
+            } else {
+                playerBScore += playerBThrow;
+            }
+        }
+        
+        System.out.println("Player A score " + playerAScore + " and Player B score is " + playerBScore);
+        
+        if (playerAScore > playerBScore) {
+            System.out.println("Player A won the game by leading with " + (playerAScore - playerBScore) + " run");
+        } else if (playerAScore < playerBScore) {
+            System.out.println("Player B won the game by leading with " + (playerBScore - playerAScore) + " run");
+        } else {
+            System.out.println("It's a draw!");
+        }
+    }
+}
