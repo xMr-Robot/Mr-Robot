@@ -1,5 +1,5 @@
 💫 About Me:
-👯 I’m looking to collaborate on developer<br>🤝 I’m looking for help with essential skills required for developer<br>🌱 I’m currently learning<br>⚡ Fun fact
+👯 I’m looking to collaborate on developer<br>🤝 I’m looking for help with essential skills required for developer<br>🌱 I’m currently learning<br>⚡ Fun fact.
 
 
 ## 🌐 Socials:
